@@ -1,3 +1,7 @@
+import mustDoPatterns.Patterns
+
 fun main(){
-    print("Hello World")
+
+    val p = Patterns()
+    p.starRightAngledTriangle()
 }
