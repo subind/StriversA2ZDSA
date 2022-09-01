@@ -1,6 +1,8 @@
 package mustDoPatterns
 
-class Patterns () {
+import simulator
+
+fun main() {
 
     /**
      *  *****
@@ -14,7 +16,7 @@ class Patterns () {
      *  Use 'repeat' or 'for loop', for printing contiguous stars, use println for moving to the next line.
      *  Enclose the above in another 'repeat' or 'for loop' that does this 5 times.
      */
-    fun pattern1() {
+    simulator("using_repeat") {
         repeat(5){
             repeat(5) {
                 print("*")
@@ -30,7 +32,7 @@ class Patterns () {
      * for loop that prints star 5 times, after this print new line
      * use the same for loop as above, which encloses the above code, so that it repeats 5 times
      */
-    fun pattern1a() {
+    simulator("using_for") {
         for(x in 0..4) {
             for (i in 0..4) {
                 print("*")
@@ -42,7 +44,7 @@ class Patterns () {
     /**
      * for each loop
      */
-    fun pattern1b() {
+    simulator("using_forEach") {
         (0 until 5).forEach {
             (0 until 5).forEach {
                 print("*")
@@ -53,16 +55,3 @@ class Patterns () {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
