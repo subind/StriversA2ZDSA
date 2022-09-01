@@ -2,6 +2,7 @@ import mustDoPatterns.Patterns
 
 fun main(){
 
+    //Use higher order functions
     val p = Patterns()
-    p.starRightAngledTriangle()
+    p.pattern1b()
 }
