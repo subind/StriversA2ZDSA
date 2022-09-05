@@ -275,14 +275,88 @@ fun main() {
         repeat(9) {
             if (!switch) {
                 ++x
-                repeat(x){print("*")}
+                repeat(x) { print("*") }
                 if (x == maxColumn) {
                     switch = true
                 }
             } else {
                 --x
-                repeat(x){print("*")}
+                repeat(x) { print("*") }
             }
+            println()
+        }
+    }
+
+    /**
+     *  1
+     *  0 1
+     *  1 0 1
+     *  0 1 0 1
+     *  1 0 1 0 1
+     */
+    simulator("pattern_11") {
+        val rowinput = 5
+        var binarySwitch: Boolean = true
+        for (i in 1..rowinput) {
+            binarySwitch = i % 2 == 0
+            repeat(i) {
+                if (!binarySwitch) print("1 ") else print("0 ")
+                binarySwitch = !binarySwitch
+            }
+            println()
+        }
+    }
+
+    /**
+     *   1      1 - 6
+     *   12    21 - 4
+     *   123  321 - 2
+     *   12344321 - 0     (8 columns)
+     */
+    /**
+     *   1        1 - 8
+     *   12      21 - 6
+     *   123    321 - 4
+     *   1234  4321 - 2
+     *   1234554321 - 0   (10 columns)
+     */
+    /**
+     * inputRows = 5
+     * columns = inputRows * 2
+     * acc to row number, print numbers upto that number
+     * hold these contiguous numbers as a string, so that it can be reversed after printing the spaces
+     * space's = columns - 2, & this value decrements by 2 at each row
+     */
+    /**
+     * outer for loop, to print multiple rows
+     * inner loop upto column length
+     * store into string values from 1 to i(outer loop index)
+     * print spaces a per logic
+     */
+    simulator("pattern_12") {
+        var inputRows = 5
+        var columns = inputRows * 2
+        var myStr: String = ""
+        var maxSpaces = columns - 2
+        var spaceProgress = 1
+        for (i in 1..inputRows) {
+            for (x in 1..columns) {
+                if (x <= i) {
+                    print(x)
+                    myStr += x.toString()
+                }
+                if ((x > i) && spaceProgress <= maxSpaces) {
+                    ++spaceProgress
+                    print(" ")
+                }
+                if (x > myStr.length + maxSpaces) {
+                    print(myStr.reversed())
+                    break
+                }
+            }
+            spaceProgress = 1
+            myStr = ""
+            maxSpaces -= 2
             println()
         }
     }
