@@ -361,8 +361,109 @@ fun main() {
         }
     }
 
+    /**
+     *  1
+     *  2 3
+     *  4 5 6
+     *  7 8 9 10
+     *  11 12 13 14 15
+     */
+    /**
+     * inputRow = 5
+     * number of values = number of rows
+     */
+    simulator("pattern_13"){
+        var x = 1
+        for(i in 1..5) {
+            for(i in 1..i) {
+                print("$x ")
+                ++x
+            }
+            println()
+        }
+    }
+
+    /**
+     *  A
+     *  AB
+     *  ABC
+     *  ABCD
+     *  ABCDE
+     */
+    simulator("pattern_14") {
+        var myArray = arrayOf("A", "B", "C", "D", "E")
+        for(i in 0 until 5) {
+            for(k in 0..i){
+                print(myArray[k])
+            }
+            println()
+        }
+    }
+
+    /**         space   letter
+     *     A    - 3       1
+     *    ABA   - 2       3
+     *   ABCBA  - 1       5
+     *  ABCDCBA - 0       7
+     */
+    simulator("pattern_15") {
+        val myArray = arrayOf("A", "B", "C", "D")
+        var space = 3
+        var myStr = ""
+        for(i in 1..4) {
+            for(j in 1..space) {
+                print(" ")
+            }
+            for(k in 1..i) {
+                myStr += myArray[k-1]
+            }
+            if(myStr.length > 1) {
+                myStr += myStr.reversed().subSequence(1, myStr.length)
+                print(myStr)
+            }else {
+                print(myStr)
+            }
+            myStr = ""
+            --space
+            println()
+        }
+    }
+
+    /**
+     *   E
+     *   D E
+     *   C D E
+     *   B C D E
+     *   A B C D E
+     */
+    /**
+     *  letter E ascii characters 69
+     */
+    var myStr = ""
+    var charAscii = 69 // E
+    simulator("pattern_16") {
+        for(i in 1..5) {
+            for(k in 1..i) {
+                myStr += charAscii.toChar().toString().replace("", " ")
+                --charAscii
+            }
+            print(myStr.reversed())
+            myStr = ""
+            charAscii = 69
+            println()
+        }
+    }
+
+
 
 }
+
+
+
+
+
+
+
 
 
 
