@@ -372,10 +372,10 @@ fun main() {
      * inputRow = 5
      * number of values = number of rows
      */
-    simulator("pattern_13"){
+    simulator("pattern_13") {
         var x = 1
-        for(i in 1..5) {
-            for(i in 1..i) {
+        for (i in 1..5) {
+            for (i in 1..i) {
                 print("$x ")
                 ++x
             }
@@ -392,8 +392,8 @@ fun main() {
      */
     simulator("pattern_14") {
         var myArray = arrayOf("A", "B", "C", "D", "E")
-        for(i in 0 until 5) {
-            for(k in 0..i){
+        for (i in 0 until 5) {
+            for (k in 0..i) {
                 print(myArray[k])
             }
             println()
@@ -410,17 +410,17 @@ fun main() {
         val myArray = arrayOf("A", "B", "C", "D")
         var space = 3
         var myStr = ""
-        for(i in 1..4) {
-            for(j in 1..space) {
+        for (i in 1..4) {
+            for (j in 1..space) {
                 print(" ")
             }
-            for(k in 1..i) {
-                myStr += myArray[k-1]
+            for (k in 1..i) {
+                myStr += myArray[k - 1]
             }
-            if(myStr.length > 1) {
+            if (myStr.length > 1) {
                 myStr += myStr.reversed().subSequence(1, myStr.length)
                 print(myStr)
-            }else {
+            } else {
                 print(myStr)
             }
             myStr = ""
@@ -442,8 +442,8 @@ fun main() {
     var myStr = ""
     var charAscii = 69 // E
     simulator("pattern_16") {
-        for(i in 1..5) {
-            for(k in 1..i) {
+        for (i in 1..5) {
+            for (k in 1..i) {
                 myStr += charAscii.toChar().toString().replace("", " ")
                 --charAscii
             }
@@ -454,14 +454,76 @@ fun main() {
         }
     }
 
+    /**
+     *   **********
+     *   ****  ****       //2
+     *   ***    ***       //4
+     *   **      **       //6
+     *   *        *       //8
+     *   *        *       //8
+     *   **      **       //6
+     *   ***    ***       //4
+     *   ****  ****       //2
+     *   **********
+     */
 
+    /**
+     *0   **********    //RE-reminderExist, NR-NoReminder
+     *2   ****  ****    //10/2 NR= 5th pos space start
+     *4   ***    ***    //10/3 RE= 3rd pos + 1
+     *6   **      **    //10/4 RE= 2nd pos + 1
+     *8   *        *    //10/5 NR= 2nd pod
+     */
+    /**
+     *
+     */
+    simulator("pattern_17.1") {
+        var spaceCountLimit = 0
+        var spaceCountController = 1
+        for (i in 1..5) {
+            for (k in 1..10) {
+                if (k >= spaceStartPos(i) && (spaceCountController <= spaceCountLimit)) {
+                    print(" ")
+                    ++spaceCountController
+                } else {
+                    print("*")
+                }
+            }
+            spaceCountLimit += 2
+            spaceCountController = 1
+            println()
+        }
+    }
+}
 
+// for pattern_17.1
+fun spaceStartPos(i: Int): Int {
+    var isRemainderZero: Boolean = 10 % i == 0
+    val adjustment = if (isRemainderZero) {
+        0
+    } else {
+        1
+    }
+    return (10 / i) + adjustment
 }
 
 
 
-
-
+/*
+simulator("") {
+    var spaceCount = 0
+    for (i in 1..5) {
+        for (k in 1..10) {
+            if (spaceStartPos(i) == i && ()) {
+                print(" ")
+            } else {
+                print("*")
+            }
+        }
+        ++spaceCount
+    }
+}
+*/
 
 
 
