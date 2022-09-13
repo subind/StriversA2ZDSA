@@ -47,9 +47,7 @@ fun main() {
         while (input > 0) {
             temp = input % 10
             input /= 10
-            if(output > 0){
-                output *= 10
-            }
+            output *= 10
             output += temp
         }
 
