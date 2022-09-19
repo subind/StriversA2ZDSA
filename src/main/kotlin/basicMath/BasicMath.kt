@@ -1,6 +1,7 @@
 package basicMath
 
 import simulator
+import kotlin.math.min
 
 fun main() {
 
@@ -52,6 +53,48 @@ fun main() {
         }
 
         println(output)
+    }
+
+    /**
+     * GCD of two numbers
+     */
+    /**
+     * Steps :-
+     * Infinite while loop
+     * gcdCandidate starts with 2 that increments after every loop, this is the variable that performs modulo on these 2 numbers
+     * if result is not gcd of both, increment the gcdCandidate by 1, else
+     * break out of the loop
+     * and print the gcdCandidate
+     *
+     */
+    simulator("GCD of 2 numbers, approach 1") {
+        val num1 = 4
+        val num2 = 8
+        var gcdCandidate = 2
+        var temp = ""
+
+        while (true) {
+            if (num1 % gcdCandidate == 0 && num2 % gcdCandidate == 0) {
+                temp = gcdCandidate.toString()
+            }
+            if (gcdCandidate >= num1 || gcdCandidate >= num2) {
+                break
+            }
+            gcdCandidate++
+        }
+        println(temp)
+    }
+
+    simulator("GCD of 2 numbers, approach 2") {
+        val num1 = 7
+        val num2 = 8
+        var gcd = "notFound"
+        for (i in 2..min(num1, num2)) {
+            if (num1 % i == 0 && num2 % i == 0) {
+                gcd = i.toString()
+            }
+        }
+        println(gcd)
     }
 
 
