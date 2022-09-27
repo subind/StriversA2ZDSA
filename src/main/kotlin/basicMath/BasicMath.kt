@@ -56,6 +56,45 @@ fun main() {
     }
 
     /**
+     * Check Palindrome
+     * Approach 1
+     */
+    simulator("Check Palindrome") {
+        val input = "123"
+        var temp = ""
+
+        for (i in input.length - 1 downTo 0) {
+            temp += input.toCharArray()[i]
+        }
+        if (temp == input) {
+            println("The input: $input is Palindrome")
+        } else {
+            println("The input: $input is not Palindrome")
+        }
+    }
+
+    /**
+     * Check Palindrome
+     * Approach 2
+     */
+    simulator("Check Palindrome - Approach 2") {
+        var initialInput = 123
+        var input = initialInput
+        var final = 0
+
+        while(input > 0) {
+            var digit = input % 10
+            final = final*10 + digit
+            input /= 10
+        }
+        if (final == initialInput) {
+            println("The input: $initialInput is Palindrome")
+        } else {
+            println("The input: $initialInput is not Palindrome")
+        }
+    }
+
+    /**
      * GCD of two numbers
      */
     /**
