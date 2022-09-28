@@ -95,6 +95,34 @@ fun main() {
     }
 
     /**
+     * Armstrong numbers
+     */
+    simulator("Armstrong numbers") {
+        var initialInput = 1634
+        var input = initialInput
+        var final = 0
+        var dummyInput = input
+        var size = 0
+
+        while(dummyInput > 0) {
+            size++
+            dummyInput /= 10
+        }
+
+        while (input > 0) {
+            var digit = (input % 10) * size
+            final += digit
+            input /= 10
+        }
+
+        if(initialInput == final){
+            println("Armstrong numbers")
+        }else {
+            println("Not Armstrong numbers")
+        }
+    }
+
+    /**
      * GCD of two numbers
      */
     /**
