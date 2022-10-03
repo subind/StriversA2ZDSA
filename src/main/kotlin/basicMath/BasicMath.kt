@@ -2,6 +2,7 @@ package basicMath
 
 import simulator
 import kotlin.math.min
+import kotlin.math.sqrt
 
 fun main() {
 
@@ -95,34 +96,6 @@ fun main() {
     }
 
     /**
-     * Armstrong numbers
-     */
-    simulator("Armstrong numbers") {
-        var initialInput = 1634
-        var input = initialInput
-        var final = 0
-        var dummyInput = input
-        var size = 0
-
-        while(dummyInput > 0) {
-            size++
-            dummyInput /= 10
-        }
-
-        while (input > 0) {
-            var digit = (input % 10) * size
-            final += digit
-            input /= 10
-        }
-
-        if(initialInput == final){
-            println("Armstrong numbers")
-        }else {
-            println("Not Armstrong numbers")
-        }
-    }
-
-    /**
      * GCD of two numbers
      */
     /**
@@ -164,5 +137,63 @@ fun main() {
         println(gcd)
     }
 
+    /**
+     * Armstrong numbers
+     */
+    simulator("Armstrong numbers") {
+        var initialInput = 1634
+        var input = initialInput
+        var final = 0
+        var dummyInput = input
+        var size = 0
+
+        while(dummyInput > 0) {
+            size++
+            dummyInput /= 10
+        }
+
+        while (input > 0) {
+            var digit = (input % 10) * size
+            final += digit
+            input /= 10
+        }
+
+        if(initialInput == final){
+            println("Armstrong numbers")
+        }else {
+            println("Not Armstrong numbers")
+        }
+    }
+
+    /**
+     * Print all divisors
+     */
+    /**
+     * Input value is n
+     * find square of n, which is m
+     * Use values from 1 to m, to divide n, the corresponding division results are also divisors of n
+     */
+    /**
+     * n = someIntValue
+     * m = sqrt(n)
+     * loop using x, increment x in every loop until it reaches m
+     * Within loop, modulo n by x, if its 0, then divide n by x, & store both x and the resultant quotient in the array
+     */
+    simulator("Print all divisors") {
+        val n = 37
+        val m = sqrt(n.toFloat()).toInt()
+        var x = 1
+        val myArray = mutableSetOf<Int>()
+        while(x <= m) {
+            if(n % x == 0) { // Divisible
+                myArray.add(x)
+                myArray.add(n / x)
+            }
+            x++
+        }
+        myArray.sorted().forEach {
+            println(it)
+        }
+    }
 
 }
