@@ -196,4 +196,43 @@ fun main() {
         }
     }
 
+    /**
+     * Prime or not
+     */
+    /**
+     * Input value is n
+     * find square of n, which is m
+     * Use values from 1 to m i.e, x, to modulo n
+     * If any modulo op above results in 0, break out of loop, & print that n is not a prime number
+     * else it's a prime number
+     */
+    /**
+     * n = someIntValue
+     * m = sqrt(n)
+     * a boolean flag false
+     * loop using x, increment x in every loop until it reaches m
+     * within loop, if n modulo x results in 0, then make flag true & break the loop
+     * if-else statement, true - is prime, else not prime
+     */
+    simulator("Prime or not") {
+        var n = 29
+        val m = sqrt(n.toDouble()).toInt()
+        var isNotPrime = false
+        var x = 2
+        while(x <= m) {
+            if(n % x == 0) {
+                isNotPrime = true
+                break
+            }
+            x++
+        }
+        println(
+            if (isNotPrime) {
+                "is not prime"
+            } else {
+                "is prime"
+            }
+        )
+    }
+
 }
