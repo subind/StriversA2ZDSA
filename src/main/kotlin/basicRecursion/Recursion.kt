@@ -30,6 +30,25 @@ fun main() {
         sumOfFirstNNumbers(5, 0, 0)
     }
 
+    /**
+     * Factorial of N numbers
+     */
+    simulator("Factorial of N numbers") {
+        factorialOfN(5, 1)
+    }
+
+}
+
+fun factorialOfN(n: Int, presentValue: Int) {
+    var n = n
+    var presentValue = presentValue
+    if(n < 1){
+        println(presentValue)
+        return
+    }
+    presentValue *= n
+    --n
+    factorialOfN(n, presentValue)
 }
 
 fun sumOfFirstNNumbers(n: Int, presentSum: Int, tempController: Int) {
