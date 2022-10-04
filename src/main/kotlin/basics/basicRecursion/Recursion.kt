@@ -1,21 +1,15 @@
-package basicRecursion
+package basics.basicRecursion
 
 import simulator
 
 fun main() {
 
-    /**
-     * Understand recursion by printing something N times
-     */
     simulator("Understand recursion by print something N times") {
         val input = 5
         val temp = 1
         recursiveFunction(input, temp)
     }
 
-    /**
-     * Print 1 to n using recursion
-     */
     simulator("Print 1 to n using recursion") {
         val n = 10
         val controller = 1
@@ -23,20 +17,32 @@ fun main() {
 
     }
 
-    /**
-     * Sum of first N numbers
-     */
     simulator("Sum of first N numbers") {
         sumOfFirstNNumbers(5, 0, 0)
     }
 
-    /**
-     * Factorial of N numbers
-     */
     simulator("Factorial of N numbers") {
         factorialOfN(5, 1)
     }
 
+    simulator("Reverse an array") {
+        var myArray = mutableListOf(5,4,3,2,1)
+        reverseAnArray(myArray, 0, myArray.size-1)
+    }
+
+}
+
+fun reverseAnArray(myArray: MutableList<Int>, startIndex: Int, endIndex: Int) {
+    var startIndex = startIndex
+    var endIndex = endIndex
+    if(startIndex >= endIndex) { //Base condition
+        println(myArray)
+        return
+    }
+    val temp = myArray[endIndex]
+    myArray[endIndex] = myArray[startIndex]
+    myArray[startIndex] = temp
+    reverseAnArray(myArray, ++startIndex, --endIndex)
 }
 
 fun factorialOfN(n: Int, presentValue: Int) {
