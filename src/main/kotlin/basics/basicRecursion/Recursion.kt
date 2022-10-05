@@ -30,6 +30,27 @@ fun main() {
         reverseAnArray(myArray, 0, myArray.size-1)
     }
 
+    simulator("String is palindrome or not") {
+        val inputString = "ABCDCBA"
+        val tempString = StringBuilder(inputString)
+        palindromeOrNot(inputString, tempString, 0, inputString.length-1)
+    }
+
+}
+
+fun palindromeOrNot(orgString: String, tempString: java.lang.StringBuilder, startIndex: Int, endIndex: Int) {
+    if(startIndex >= endIndex) { //BaseCondition
+        if(orgString == tempString.toString()) {
+            println("$orgString is a palindrome")
+        } else {
+            println("$orgString is not a palindrome")
+        }
+        return
+    }
+    val temp = tempString[endIndex]
+    tempString[endIndex] = tempString[startIndex]
+    tempString[startIndex] = temp
+    palindromeOrNot(orgString, tempString, startIndex+1, endIndex-1)
 }
 
 fun reverseAnArray(myArray: MutableList<Int>, startIndex: Int, endIndex: Int) {
