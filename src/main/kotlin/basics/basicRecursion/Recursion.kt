@@ -36,6 +36,41 @@ fun main() {
         palindromeOrNot(inputString, tempString, 0, inputString.length-1)
     }
 
+    simulator("Fibonacci series") {
+        val myArray = mutableListOf<Int>()
+        fibonacciSeries(7, myArray, 0)
+    }
+
+}
+
+/**
+ * input n,
+ * so print fibonacci series of n elements
+ * starts from 0
+ * in-case of 0, next value is 1
+ * for rest of the values, subsequent values are obtained by adding the current index value to the previous index value
+ */
+/**
+ * Initialise a mutable arraylist & pass into it.
+ * if size of list is 0, insert 0 to it
+ * if size of list is 1, insert 1 to it
+ * if size of list is greater than 1, then :-
+ * add the last index value with immediate lower index, & insert this value to the array
+ */
+fun fibonacciSeries(n: Int, myArray: MutableList<Int>, counter: Int) {
+    if(counter >= n) {//Base condition
+        println(myArray)
+        return
+    }
+    if(myArray.size == 0) {
+        myArray.add(0)
+    } else if(myArray.size == 1) {
+        myArray.add(1)
+    } else {
+        val newElement = myArray[myArray.size-1] + myArray[myArray.size-2]
+        myArray.add(newElement)
+    }
+    fibonacciSeries(n, myArray, counter+1)
 }
 
 fun palindromeOrNot(orgString: String, tempString: java.lang.StringBuilder, startIndex: Int, endIndex: Int) {
