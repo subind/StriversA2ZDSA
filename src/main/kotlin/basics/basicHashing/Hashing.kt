@@ -111,23 +111,23 @@ fun main() {
         }
     }
 
-    /**
-     * simulator("Counting frequencies of array elements: Approach3: Using 2 loops") {
-    var myArray = mutableListOf(10, 5, 10, 15, 10, 5)
-    myArray = myArray.sorted().toMutableList() //5, 5, 10, 10, 10, 15
-    var visitedElements = mutableListOf<Int>()
-    var counter = 0
-    myArray.forEach { elementUnderProcess ->
-    if (!visitedElements.contains(elementUnderProcess)) {
-    visitedElements.add(elementUnderProcess)
-    myArray.forEach { innerLoopValue ->
-    if (innerLoopValue == elementUnderProcess) {
-    ++counter
+    simulator("Counting frequencies of array elements:  Approach: Striver") {
+        val myArray = mutableListOf(10, 5, 10, 15, 10, 5)
+        val visitedElements = mutableListOf<Int>()
+
+        myArray.forEach { elementUnderDiscussion ->
+            if(visitedElements.contains(elementUnderDiscussion)) {
+                return@forEach
+            }
+            visitedElements.add(elementUnderDiscussion)
+            var count = 0
+            myArray.forEach { innerLoopValue ->
+                if(innerLoopValue == elementUnderDiscussion) {
+                    count++
+                }
+            }
+            println("Value $elementUnderDiscussion is repeated $count time's")
+        }
     }
-    }
-    }
-    }
-    }
-     */
 
 }
