@@ -12,7 +12,7 @@ fun main() {
      * loop through the array until its length
      * If any element is not present in hashmap, reset count value to 1
      */
-    simulator("Counting frequencies of array elements: Approach: Hashmap") {
+    simulator("Counting frequencies of array elements: Approach1: Hashmap") {
         val myArray = mutableListOf(10, 5, 10, 15, 10, 5)
         val myHashMap = mutableMapOf<Int, Int>()
         var counter = 0
@@ -47,7 +47,7 @@ fun main() {
      * Have an if statement within outer loop, if(x != null & oI < x) {continue} else { x = null }
      *
      */
-    simulator("Counting frequencies of array elements: Approach: Using 2 loops") {
+    simulator("Counting frequencies of array elements: Approach2: Using 2 loops") {
         var myArray = mutableListOf(10, 5, 10, 15, 10, 5)
         myArray = myArray.sorted().toMutableList()
         var occurrence = 0
@@ -66,10 +66,10 @@ fun main() {
                     }
                     if (oV == iV) {
                         ++occurrence
-                        if (oI == myArray.size-1) {
+                        if (oI == myArray.size - 1) {
                             println("Value $oV is repeated $occurrence times")
                         }
-                    } else if (oI == myArray.size-1) {
+                    } else if (oI == myArray.size - 1) {
                         println("Value $oV is repeated 1 time")
                     } else {
                         nextUniqueElementPos = iI
@@ -82,5 +82,52 @@ fun main() {
         }
 
     }
+
+    simulator("Counting frequencies of array elements: Approach3: Using 2 loops, with an array to maintain visited elements") {
+        var myArray = mutableListOf(10, 5, 10, 15, 10, 5)
+        myArray = myArray.sorted().toMutableList() //5, 5, 10, 10, 10, 15
+        var visitedElements = mutableListOf<Int>()
+        var counter = 0
+        var tempOldElementUnderProcess: Int? = null
+        myArray.forEachIndexed { elementUnderProcessIndex, elementUnderProcess ->
+            if(tempOldElementUnderProcess!=null && elementUnderProcess != tempOldElementUnderProcess) {
+                println("Value $tempOldElementUnderProcess is repeated $counter time's")
+                counter = 0
+                if(elementUnderProcessIndex == myArray.size-1) {
+                    println("Value $elementUnderProcess is repeated 1 time")
+                }
+            } else if(elementUnderProcessIndex == myArray.size-1) {
+                println("Value $tempOldElementUnderProcess is repeated $counter time's")
+            }
+            tempOldElementUnderProcess = elementUnderProcess
+            if (!visitedElements.contains(elementUnderProcess)) {
+                visitedElements.add(elementUnderProcess)
+                myArray.forEach { innerLoopValue ->
+                    if (innerLoopValue == elementUnderProcess) {
+                        ++counter
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * simulator("Counting frequencies of array elements: Approach3: Using 2 loops") {
+    var myArray = mutableListOf(10, 5, 10, 15, 10, 5)
+    myArray = myArray.sorted().toMutableList() //5, 5, 10, 10, 10, 15
+    var visitedElements = mutableListOf<Int>()
+    var counter = 0
+    myArray.forEach { elementUnderProcess ->
+    if (!visitedElements.contains(elementUnderProcess)) {
+    visitedElements.add(elementUnderProcess)
+    myArray.forEach { innerLoopValue ->
+    if (innerLoopValue == elementUnderProcess) {
+    ++counter
+    }
+    }
+    }
+    }
+    }
+     */
 
 }
