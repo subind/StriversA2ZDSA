@@ -23,8 +23,8 @@ fun main() {
         var leftMostP = 0
         unSortedList.forEach {
             lowestValueTemp = unSortedList[leftMostP]
-            for(i in leftMostP until unSortedList.size) {
-                if(unSortedList[i] < lowestValueTemp) {
+            for (i in leftMostP until unSortedList.size) {
+                if (unSortedList[i] < lowestValueTemp) {
                     lowestValueTemp = unSortedList[i]
                     lowestValueP = i
                 }
@@ -36,8 +36,25 @@ fun main() {
             lowestValueTemp = 0
         }
         println(unSortedList)
+    }
 
+    simulator("Brute force sort approach 2") {
+        val unSortedList = mutableListOf(13, 46, 24, 52, 20, 9)
 
+        var tempLowestValue = 0
+        var tempLowestValuePos = 0
+        unSortedList.forEachIndexed { pointerIndex, pointerValue ->
+            tempLowestValue = pointerValue
+            for (i in pointerIndex until unSortedList.size) {
+                if (unSortedList[i] < tempLowestValue) {
+                    tempLowestValue = unSortedList[i]
+                    tempLowestValuePos = i
+                }
+            }
+            unSortedList[tempLowestValuePos] = pointerValue
+            unSortedList[pointerIndex] = tempLowestValue
+        }
+        println(unSortedList)
     }
 
 }
