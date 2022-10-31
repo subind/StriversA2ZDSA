@@ -1,4 +1,4 @@
-package basics.mustDoPatterns
+package step1_basics.mustDoPatterns
 
 import simulator
 

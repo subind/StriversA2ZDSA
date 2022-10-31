@@ -1,4 +1,4 @@
-package sortingTechniques.sorting1
+package step2_sortingTechniques.sorting1
 
 import simulator
 

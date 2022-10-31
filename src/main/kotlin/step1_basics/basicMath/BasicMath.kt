@@ -1,4 +1,4 @@
-package basics.basicMath
+package step1_basics.basicMath
 
 import simulator
 import kotlin.math.min

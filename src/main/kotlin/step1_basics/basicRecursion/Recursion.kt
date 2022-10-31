@@ -1,4 +1,4 @@
-package basics.basicRecursion
+package step1_basics.basicRecursion
 
 import simulator
 

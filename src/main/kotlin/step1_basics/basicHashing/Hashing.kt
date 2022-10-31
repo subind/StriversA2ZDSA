@@ -1,4 +1,4 @@
-package basics.basicHashing
+package step1_basics.basicHashing
 
 import simulator
 
